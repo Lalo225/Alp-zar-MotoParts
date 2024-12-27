@@ -22,8 +22,136 @@
             margin: 0;
             font-size: 2em;
         }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ff5722;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
             padding: 20px;
-            background: white;
+            text-align: center;
+        }
+        #productos {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .letra {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #ff5722;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .letra:hover {
+            background-color: #e64a19;
+        }
+        .producto {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Productos Disponibles</h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+    </nav>
+    <section id="productos">
+        <h2>Explora nuestros productos</h2>
+        <p>Selecciona una letra para ver los productos correspondientes:</p>
+        <div>
+            <!-- Letras para seleccionar -->
+            <a class="letra" href="?letra=A">A</a>
+            <a class="letra" href="?letra=B">B</a>
+            <a class="letra" href="?letra=C">C</a>
+            <a class="letra" href="?letra=D">D</a>
+            <a class="letra" href="?letra=E">E</a>
+        </div>
+
+        <!-- Mostrar productos dependiendo de la letra seleccionada -->
+        <div id="productos-lista">
+            <!-- Aquí se muestran los productos -->
+            <div id="productos-A" class="producto-lista" style="display:none;">
+                <h3>Ajustadores de cadena</h3>
+                <p>Ajustador de cadena tipo A - $150</p>
+                <p>Ajustador de cadena tipo B - $170</p>
+                <p>Ajustador de cadena tipo C - $200</p>
+            </div>
+            <div id="productos-B" class="producto-lista" style="display:none;">
+                <h3>Balatas</h3>
+                <p>Balata tipo A - $250</p>
+                <p>Balata tipo B - $280</p>
+                <p>Balata tipo C - $320</p>
+            </div>
+            <div id="productos-C" class="producto-lista" style="display:none;">
+                <h3>Cámaras</h3>
+                <p>Cámara tipo A - $100</p>
+                <p>Cámara tipo B - $120</p>
+                <p>Cámara tipo C - $140</p>
+            </div>
+            <div id="productos-D" class="producto-lista" style="display:none;">
+                <h3>Herramientas de Mantenimiento</h3>
+                <p>Herramienta de ajuste de freno - $350</p>
+                <p>Destornillador profesional - $180</p>
+                <p>Llave de torque - $400</p>
+            </div>
+            <div id="productos-E" class="producto-lista" style="display:none;">
+                <h3>Equipos de Protección</h3>
+                <p>Guantes de moto - $200</p>
+                <p>Rodilleras de moto - $300</p>
+                <p>Chaqueta de protección - $800</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Función para mostrar los productos según la letra seleccionada
+        const urlParams = new URLSearchParams(window.location.search);
+        const letra = urlParams.get('letra');
+
+        // Ocultar todos los productos
+        const allProducts = document.querySelectorAll('.producto-lista');
+        allProducts.forEach(product => product.style.display = 'none');
+
+        // Mostrar el producto de la letra seleccionada
+        if (letra) {
+            const selectedProduct = document.getElementById(productos-${letra});
+            if (selectedProduct) {
+                selectedProduct.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
