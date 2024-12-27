@@ -87,17 +87,34 @@
     </header>
     <section id="productos">
         <h2>Elige una letra para ver los productos:</h2>
+        <!-- Letras de A a Z -->
         <div>
-            <!-- Generar todas las letras de A a Z -->
-            <script>
-                document.write(
-                    Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-                        .map(
-                            letra => <span class="letra" onclick="mostrarProductos('${letra}')">${letra}</span>
-                        )
-                        .join('')
-                );
-            </script>
+            <span class="letra" onclick="mostrarProductos('A')">A</span>
+            <span class="letra" onclick="mostrarProductos('B')">B</span>
+            <span class="letra" onclick="mostrarProductos('C')">C</span>
+            <span class="letra" onclick="mostrarProductos('D')">D</span>
+            <span class="letra" onclick="mostrarProductos('E')">E</span>
+            <span class="letra" onclick="mostrarProductos('F')">F</span>
+            <span class="letra" onclick="mostrarProductos('G')">G</span>
+            <span class="letra" onclick="mostrarProductos('H')">H</span>
+            <span class="letra" onclick="mostrarProductos('I')">I</span>
+            <span class="letra" onclick="mostrarProductos('J')">J</span>
+            <span class="letra" onclick="mostrarProductos('K')">K</span>
+            <span class="letra" onclick="mostrarProductos('L')">L</span>
+            <span class="letra" onclick="mostrarProductos('M')">M</span>
+            <span class="letra" onclick="mostrarProductos('N')">N</span>
+            <span class="letra" onclick="mostrarProductos('O')">O</span>
+            <span class="letra" onclick="mostrarProductos('P')">P</span>
+            <span class="letra" onclick="mostrarProductos('Q')">Q</span>
+            <span class="letra" onclick="mostrarProductos('R')">R</span>
+            <span class="letra" onclick="mostrarProductos('S')">S</span>
+            <span class="letra" onclick="mostrarProductos('T')">T</span>
+            <span class="letra" onclick="mostrarProductos('U')">U</span>
+            <span class="letra" onclick="mostrarProductos('V')">V</span>
+            <span class="letra" onclick="mostrarProductos('W')">W</span>
+            <span class="letra" onclick="mostrarProductos('X')">X</span>
+            <span class="letra" onclick="mostrarProductos('Y')">Y</span>
+            <span class="letra" onclick="mostrarProductos('Z')">Z</span>
         </div>
         <div class="productos-lista" id="productos-lista">
             <!-- Aquí se mostrarán los productos -->
