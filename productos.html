@@ -22,28 +22,9 @@
             margin: 0;
             font-size: 2em;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #ff5722;
-            padding: 10px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
         section {
             padding: 20px;
             text-align: center;
-        }
-        #productos {
-            max-width: 800px;
-            margin: 0 auto;
         }
         .letra {
             font-size: 18px;
@@ -68,6 +49,7 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             text-align: left;
+            position: relative;
         }
         .producto h3 {
             margin: 0 0 10px;
@@ -76,6 +58,26 @@
         .producto p {
             margin: 0;
             color: #666;
+        }
+        .detalles {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+            color: #444;
+        }
+        .producto button {
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .producto button:hover {
+            background-color: #e64a19;
         }
     </style>
 </head>
@@ -86,12 +88,16 @@
     <section id="productos">
         <h2>Elige una letra para ver los productos:</h2>
         <div>
-            <span class="letra" onclick="mostrarProductos('A')">A</span>
-            <span class="letra" onclick="mostrarProductos('B')">B</span>
-            <span class="letra" onclick="mostrarProductos('C')">C</span>
-            <span class="letra" onclick="mostrarProductos('D')">D</span>
-            <span class="letra" onclick="mostrarProductos('E')">E</span>
-            <!-- Añadir más letras aquí si es necesario -->
+            <!-- Generar todas las letras de A a Z -->
+            <script>
+                document.write(
+                    Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                        .map(
+                            letra => <span class="letra" onclick="mostrarProductos('${letra}')">${letra}</span>
+                        )
+                        .join('')
+                );
+            </script>
         </div>
         <div class="productos-lista" id="productos-lista">
             <!-- Aquí se mostrarán los productos -->
@@ -103,44 +109,33 @@
             const productosLista = document.getElementById('productos-lista');
             productosLista.innerHTML = ''; // Limpiar contenido previo
 
-            if (letra === 'A') {
+            if (letra === 'Z') {
                 productosLista.innerHTML = `
                     <div class="producto">
-                        <h3>Ajustador de cadena</h3>
-                        <p>Alta calidad para motos deportivas. Precio: $100</p>
+                        <h3>Zapatas de freno trasero</h3>
+                        <p>Precio: $92</p>
+                        <button onclick="mostrarDetalles(this)">Ver más detalles</button>
+                        <div class="detalles">
+                            <p>Alta calidad y resistencia, ideales para motocicletas DM-200.</p>
+                        </div>
                     </div>
                     <div class="producto">
-                        <h3>Accesorios de manubrio</h3>
-                        <p>Variedad de modelos. Precio: $150</p>
-                    </div>
-                `;
-            } else if (letra === 'B') {
-                productosLista.innerHTML = `
-                    <div class="producto">
-                        <h3>Balatas delanteras</h3>
-                        <p>Resistentes y duraderas. Precio: $200</p>
-                    </div>
-                    <div class="producto">
-                        <h3>Balatas traseras</h3>
-                        <p>Perfectas para frenado seguro. Precio: $180</p>
-                    </div>
-                `;
-            } else if (letra === 'C') {
-                productosLista.innerHTML = `
-                    <div class="producto">
-                        <h3>Cámara para llanta 17"</h3>
-                        <p>Compatible con llantas deportivas. Precio: $120</p>
-                    </div>
-                    <div class="producto">
-                        <h3>Cámara para llanta 18"</h3>
-                        <p>Diseño resistente. Precio: $130</p>
+                        <h3>Zapatos para DM-200</h3>
+                        <p>Precio: $110</p>
+                        <button onclick="mostrarDetalles(this)">Ver más detalles</button>
+                        <div class="detalles">
+                            <p>Diseño robusto y adaptable a diferentes tipos de terreno.</p>
+                        </div>
                     </div>
                 `;
             } else {
-                productosLista.innerHTML = `
-                    <p>Lo sentimos, aún no hay productos disponibles para la letra ${letra}.</p>
-                `;
+                productosLista.innerHTML = <p>No hay productos para la letra ${letra} aún.</p>;
             }
+        }
+
+        function mostrarDetalles(button) {
+            const detalles = button.nextElementSibling;
+            detalles.style.display = detalles.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
