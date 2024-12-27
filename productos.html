@@ -50,106 +50,96 @@
             font-weight: bold;
             margin: 5px;
             display: inline-block;
-            padding: 10px 15px;
-            background-color: #ff5722;
-            color: #fff;
-            border-radius: 5px;
             cursor: pointer;
+            color: #ff5722;
+            text-decoration: underline;
         }
         .letra:hover {
-            background-color: #e64a19;
+            color: #e64a19;
+        }
+        .productos-lista {
+            margin-top: 20px;
         }
         .producto {
-            margin-top: 20px;
-            padding: 10px;
             background-color: #fff;
+            margin: 10px auto;
+            padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: left;
         }
-        footer {
-            background-color: #212121;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        .producto h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .producto p {
+            margin: 0;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Productos Disponibles</h1>
+        <h1>Productos - Moto Partes Alpízar</h1>
     </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-    </nav>
     <section id="productos">
-        <h2>Explora nuestros productos</h2>
-        <p>Selecciona una letra para ver los productos correspondientes:</p>
+        <h2>Elige una letra para ver los productos:</h2>
         <div>
-            <!-- Letras para seleccionar -->
-            <a class="letra" href="?letra=A">A</a>
-            <a class="letra" href="?letra=B">B</a>
-            <a class="letra" href="?letra=C">C</a>
-            <a class="letra" href="?letra=D">D</a>
-            <a class="letra" href="?letra=E">E</a>
+            <span class="letra" onclick="mostrarProductos('A')">A</span>
+            <span class="letra" onclick="mostrarProductos('B')">B</span>
+            <span class="letra" onclick="mostrarProductos('C')">C</span>
+            <span class="letra" onclick="mostrarProductos('D')">D</span>
+            <span class="letra" onclick="mostrarProductos('E')">E</span>
+            <!-- Añadir más letras aquí si es necesario -->
         </div>
-
-        <!-- Mostrar productos dependiendo de la letra seleccionada -->
-        <div id="productos-lista">
-            <!-- Aquí se muestran los productos -->
-            <div id="productos-A" class="producto-lista" style="display:none;">
-                <h3>Ajustadores de cadena</h3>
-                <p>Ajustador de cadena tipo A - $150</p>
-                <p>Ajustador de cadena tipo B - $170</p>
-                <p>Ajustador de cadena tipo C - $200</p>
-            </div>
-            <div id="productos-B" class="producto-lista" style="display:none;">
-                <h3>Balatas</h3>
-                <p>Balata tipo A - $250</p>
-                <p>Balata tipo B - $280</p>
-                <p>Balata tipo C - $320</p>
-            </div>
-            <div id="productos-C" class="producto-lista" style="display:none;">
-                <h3>Cámaras</h3>
-                <p>Cámara tipo A - $100</p>
-                <p>Cámara tipo B - $120</p>
-                <p>Cámara tipo C - $140</p>
-            </div>
-            <div id="productos-D" class="producto-lista" style="display:none;">
-                <h3>Herramientas de Mantenimiento</h3>
-                <p>Herramienta de ajuste de freno - $350</p>
-                <p>Destornillador profesional - $180</p>
-                <p>Llave de torque - $400</p>
-            </div>
-            <div id="productos-E" class="producto-lista" style="display:none;">
-                <h3>Equipos de Protección</h3>
-                <p>Guantes de moto - $200</p>
-                <p>Rodilleras de moto - $300</p>
-                <p>Chaqueta de protección - $800</p>
-            </div>
+        <div class="productos-lista" id="productos-lista">
+            <!-- Aquí se mostrarán los productos -->
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
-    </footer>
-
     <script>
-        // Función para mostrar los productos según la letra seleccionada
-        const urlParams = new URLSearchParams(window.location.search);
-        const letra = urlParams.get('letra');
+        function mostrarProductos(letra) {
+            const productosLista = document.getElementById('productos-lista');
+            productosLista.innerHTML = ''; // Limpiar contenido previo
 
-        // Ocultar todos los productos
-        const allProducts = document.querySelectorAll('.producto-lista');
-        allProducts.forEach(product => product.style.display = 'none');
-
-        // Mostrar el producto de la letra seleccionada
-        if (letra) {
-            const selectedProduct = document.getElementById(productos-${letra});
-            if (selectedProduct) {
-                selectedProduct.style.display = 'block';
+            if (letra === 'A') {
+                productosLista.innerHTML = `
+                    <div class="producto">
+                        <h3>Ajustador de cadena</h3>
+                        <p>Alta calidad para motos deportivas. Precio: $100</p>
+                    </div>
+                    <div class="producto">
+                        <h3>Accesorios de manubrio</h3>
+                        <p>Variedad de modelos. Precio: $150</p>
+                    </div>
+                `;
+            } else if (letra === 'B') {
+                productosLista.innerHTML = `
+                    <div class="producto">
+                        <h3>Balatas delanteras</h3>
+                        <p>Resistentes y duraderas. Precio: $200</p>
+                    </div>
+                    <div class="producto">
+                        <h3>Balatas traseras</h3>
+                        <p>Perfectas para frenado seguro. Precio: $180</p>
+                    </div>
+                `;
+            } else if (letra === 'C') {
+                productosLista.innerHTML = `
+                    <div class="producto">
+                        <h3>Cámara para llanta 17"</h3>
+                        <p>Compatible con llantas deportivas. Precio: $120</p>
+                    </div>
+                    <div class="producto">
+                        <h3>Cámara para llanta 18"</h3>
+                        <p>Diseño resistente. Precio: $130</p>
+                    </div>
+                `;
+            } else {
+                productosLista.innerHTML = `
+                    <p>Lo sentimos, aún no hay productos disponibles para la letra ${letra}.</p>
+                `;
             }
         }
     </script>
