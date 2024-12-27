@@ -98,11 +98,62 @@
         <h2>Nuestros Productos</h2>
         <p>Te ofrecemos:</p>
         <div>
-            <img src="https://github.com/refaccionaria-alpizar/Alp-zar-MotoParts/commit/663674017c1efbddd384c6cbff7f13aed0b50ecc/100" alt="llanta">
-            <img src="https://via.placeholder.com/100" alt="Aceite">
-            <img src="https://via.placeholder.com/100" alt="Refacción">
+            <!-- Primer producto -->
+            <div class="producto">
+                <img src="https://via.placeholder.com/100" alt="Casco">
+                <div class="producto-info">
+                    <p>Casco de moto</p>
+                    <p>Precio: $500</p>
+                </div>
+            </div>
+            <!-- Segundo producto -->
+            <div class="producto">
+                <img src="https://via.placeholder.com/100" alt="Aceite">
+                <div class="producto-info">
+                    <p>Aceite para moto</p>
+                    <p>Precio: $150</p>
+                </div>
+            </div>
+            <!-- Tercer producto -->
+            <div class="producto">
+                <img src="https://via.placeholder.com/100" alt="Refacción">
+                <div class="producto-info">
+                    <p>Refacción de motor</p>
+                    <p>Precio: $200</p>
+                </div>
+            </div>
         </div>
-        <p><button>Ver más productos</button></p>
+
+        <div id="productos-adicionales" style="display:none;">
+            <h3>Más Productos</h3>
+            <div>
+                <!-- Producto adicional 1 -->
+                <div class="producto">
+                    <img src="https://via.placeholder.com/100" alt="Casco 2">
+                    <div class="producto-info">
+                        <p>Casco de moto 2</p>
+                        <p>Precio: $550</p>
+                    </div>
+                </div>
+                <!-- Producto adicional 2 -->
+                <div class="producto">
+                    <img src="https://via.placeholder.com/100" alt="Aceite 2">
+                    <div class="producto-info">
+                        <p>Aceite para moto 2</p>
+                        <p>Precio: $160</p>
+                    </div>
+                </div>
+                <!-- Producto adicional 3 -->
+                <div class="producto">
+                    <img src="https://via.placeholder.com/100" alt="Refacción 2">
+                    <div class="producto-info">
+                        <p>Refacción de motor 2</p>
+                        <p>Precio: $210</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p><button onclick="mostrarProductos()">Ver más productos</button></p>
     </section>
     <section id="nosotros">
         <h2>Sobre Nosotros</h2>
@@ -111,12 +162,20 @@
     </section>
     <section id="contacto">
         <h2>Contacto</h2>
-        <p>📞 Teléfono: +52 722-843-4680</p>
+        <p>📞 Teléfono: <a href="https://wa.me/52278434680" target="_blank">+52 722 843 4680</a></p>
         <p>📧 Correo: contacto@motopartesalpizar.com</p>
-        <p>📍 Dirección: San Andres de los Gama Barrio la Vega</p>
+        <p>📍 Dirección: San Andrés de los Gama, Barrio la Vega, Estado de Mexico</p>
     </section>
     <footer>
         <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
     </footer>
+    <script>
+        function mostrarProductos() {
+            var productosAdicionales = document.getElementById("productos-adicionales");
+            productosAdicionales.style.display = "block"; // Muestra los productos adicionales
+        }
+    </script>
 </body>
 </html>
+        
+    
