@@ -7,166 +7,338 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
         }
         header {
-            background-color: #212121;
+            background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5em;
-        }
-        #categories {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
         }
         .category {
-            background-color: #007bff;
-            color: #fff;
+            padding: 10px;
             margin: 10px;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-        .category:hover {
-            transform: scale(1.1);
-            background-color: #0056b3;
-        }
-        #product-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .product-section {
-            margin: 20px 0;
-        }
-        .product-section h2 {
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+            display: inline-block;
         }
         .product {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
+            background: #fff;
             padding: 10px;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         .product img {
-            width: 100px;
-            height: 100px;
-            border-radius: 8px;
+            max-width: 80px;
         }
         .product-details {
-            flex: 1;
-            margin-left: 20px;
+            flex-grow: 1;
+            margin-left: 10px;
         }
-        .product-name {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        .product-price {
-            color: #007bff;
-            font-size: 1.2em;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
+        .product button {
+            background: #007bff;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 5px 10px;
+            border-radius: 3px;
             cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Catálogo de Productos</h1>
-        <p>Selecciona una categoría para ver más detalles</p>
     </header>
-
-    <div id="categories">
-        <div class="category" onclick="showCategory('aceites')">Aceites</div>
-        <div class="category" onclick="showCategory('transmision')">Transmisión Mecánica</div>
-    </div>
-
-    <div id="product-container">
-        <!-- Sección de Aceites -->
-        <div id="aceites" class="product-section">
-            <h2>Aceites</h2>
-            <div class="product">
-                <img src="img/aceite-2t-akron.jpg" alt="Aceite 2T Akron">
-                <div class="product-details">
-                    <div class="product-name">Aceite 2T Akron</div>
-                    <div class="product-price">$35.00</div>
-                </div>
-                <button onclick="goToDetails('aceite-2t-akron')">Detalles</button>
+    <main><section class="category"><h2>Aceites</h2>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 2T Akron</h3>
+                <p>Precio: 35.00 $</p>
+                <button>Detalles</button>
             </div>
-            <div class="product">
-                <img src="img/aceite-4t-akron.jpg" alt="Aceite 4T Akron">
-                <div class="product-details">
-                    <div class="product-name">Aceite 4T Akron</div>
-                    <div class="product-price">$150.00</div>
-                </div>
-                <button onclick="goToDetails('aceite-4t-akron')">Detalles</button>
-            </div>
-            <!-- Repite para cada producto de aceites -->
         </div>
-
-        <!-- Sección de Transmisión Mecánica -->
-        <div id="transmision" class="product-section">
-            <h2>Transmisión Mecánica</h2>
-            <div class="product">
-                <img src="img/ajustadores-dm150.jpg" alt="Ajustadores de Cadena DM150">
-                <div class="product-details">
-                    <div class="product-name">Ajustadores de Cadena DM150</div>
-                    <div class="product-price">$150.00</div>
-                </div>
-                <button onclick="goToDetails('ajustadores-dm150')">Detalles</button>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Akron 20W-50W</h3>
+                <p>Precio: 150.00 $</p>
+                <button>Detalles</button>
             </div>
-            <div class="product">
-                <img src="img/kit-sprocket-ft125.jpg" alt="Kit de Sprocket FT125">
-                <div class="product-details">
-                    <div class="product-name">Kit de Sprocket FT125</div>
-                    <div class="product-price">$300.00</div>
-                </div>
-                <button onclick="goToDetails('kit-sprocket-ft125')">Detalles</button>
-            </div>
-            <!-- Repite para cada producto de transmisión mecánica -->
         </div>
-    </div>
-
-    <script>
-        function showCategory(category) {
-            const sections = document.querySelectorAll('.product-section');
-            sections.forEach(section => {
-                section.style.display = section.id === category ? 'block' : 'none';
-            });
-        }
-
-        function goToDetails(productId) {
-            window.location.href = detalle.html?product=${productId};
-        }
-
-        // Mostrar solo los aceites al cargar la página
-        showCategory('aceites');
-    </script>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Bardahl 20W50W</h3>
+                <p>Precio: 140.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Castrol 20W-50W</h3>
+                <p>Precio: 190.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T City Road</h3>
+                <p>Precio: 110.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Italika 20W-50W</h3>
+                <p>Precio: 135.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Motul Mineral 3000</h3>
+                <p>Precio: 210.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite Motul Sintético 7100</h3>
+                <p>Precio: 320.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite Repsol para Barra de Orquilla</h3>
+                <p>Precio: 215.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Repsol Rider</h3>
+                <p>Precio: 180.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Aceite 4T Yamalube</h3>
+                <p>Precio: 190.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Agua para Batería Akron 460ml</h3>
+                <p>Precio: 20.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div></section><section class="category"><h2>Transmision</h2>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustadores de Cadena DM 150 Sayto</h3>
+                <p>Precio: 150.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustadores de Cadena DM 200</h3>
+                <p>Precio: 160.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustadores de Cadena Winmex DM200</h3>
+                <p>Precio: 140.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustadores de Cadena Winmex FT150</h3>
+                <p>Precio: 100.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustadores de Cadena Winmex FT125</h3>
+                <p>Precio: 50.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Ajustado de Cadena YOG Z125</h3>
+                <p>Precio: 200.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Nasaki</h3>
+                <p>Precio: 300.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Atlas</h3>
+                <p>Precio: 250.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Winmex</h3>
+                <p>Precio: 300.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket Z125 Kumoto</h3>
+                <p>Precio: 300.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket RC150 Nasaki</h3>
+                <p>Precio: 350.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT150</h3>
+                <p>Precio: 235.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Italika</h3>
+                <p>Precio: 350.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket Z150 Italika</h3>
+                <p>Precio: 350.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket AT110 Atlas</h3>
+                <p>Precio: 250.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM200 Italika</h3>
+                <p>Precio: 450.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM 150 Iron Box Cade</h3>
+                <p>Precio: 680.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM200 Kirus</h3>
+                <p>Precio: 450.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Kirus</h3>
+                <p>Precio: 370.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket 150Z</h3>
+                <p>Precio: 450.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket AT110 Italika</h3>
+                <p>Precio: 300.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT150 Atlas</h3>
+                <p>Precio: 250.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM200 Atlas</h3>
+                <p>Precio: 300.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT125 Atlas</h3>
+                <p>Precio: 250.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT150 Iron Box</h3>
+                <p>Precio: 420.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM200 Reforzado</h3>
+                <p>Precio: 450.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket DM 150 Iron Box</h3>
+                <p>Precio: 680.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-details">
+                <h3>Kit de Sprocket FT 125 Roda Mais</h3>
+                <p>Precio: 235.00 $</p>
+                <button>Detalles</button>
+            </div>
+        </div></section>
+    </main>
 </body>
 </html>
