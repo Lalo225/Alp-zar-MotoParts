@@ -20,37 +20,28 @@
             font-size: 2.5em;
         }
 
-        #alphabet-container {
+        #search-container {
             text-align: center;
-            margin-top: 30px;
+            margin: 20px 0;
         }
 
-        .alphabet {
-            cursor: pointer;
+        input[type="text"] {
             padding: 10px;
-            margin: 5px;
-            font-size: 1.2em;
-            font-weight: bold;
-            display: inline-block;
-            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ddd;
             border-radius: 5px;
         }
 
-        .alphabet:hover {
-            background-color: #4CAF50;
-            color: white;
-            transform: scale(1.1);
-        }
-
         #product-container {
-            margin-top: 30px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            margin: 20px;
         }
 
         .product {
-            display: none;
             background-color: #fff;
             padding: 15px;
             margin: 10px;
@@ -66,62 +57,25 @@
             transform: translateY(-5px);
         }
 
-        .section {
+        .hidden {
             display: none;
-            margin-top: 20px;
         }
-
-        .section.active {
-            display: block;
-        }
-
     </style>
 </head>
 <body>
     <h1>Productos</h1>
-    <div id="alphabet-container">
-        <!-- Aquí se generará el abecedario -->
+    <div id="search-container">
+        <input type="text" id="search-bar" placeholder="Buscar productos...">
     </div>
     <div id="product-container">
-        <!-- Aquí van las secciones de productos -->
-        <div id="A" class="section">
-            <div class="product">Aceites</div>
-            <!-- Añadir más productos de la letra A -->
-        </div>
-        <div id="B" class="section">
-            <div class="product">Balatas</div>
-            <!-- Añadir más productos de la letra B -->
-        </div>
-        <div id="C" class="section">
-            <div class="product">Cables</div>
-            <!-- Añadir más productos de la letra C -->
-        </div>
-        <!-- Añadir más secciones según sea necesario -->
+        <div class="product" data-name="Aceites">Aceites</div>
+        <div class="product" data-name="Balatas">Balatas</div>
+        <div class="product" data-name="Cables">Cables</div>
+        <div class="product" data-name="Casco de moto">Casco de moto</div>
+        <div class="product" data-name="Frenos">Frenos</div>
+        <div class="product" data-name="Luces LED">Luces LED</div>
+        <!-- Añade más productos según sea necesario -->
     </div>
-
-    <script>
-        // Generar el abecedario
-        const alphabetContainer = document.getElementById('alphabet-container');
-        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        alphabet.forEach(letter => {
-            const letterElement = document.createElement('div');
-            letterElement.className = 'alphabet';
-            letterElement.innerText = letter;
-            letterElement.onclick = () => showSection(letter);
-            alphabetContainer.appendChild(letterElement);
-        });
-
-        // Mostrar la sección de productos según la letra seleccionada
-        function showSection(letter) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                if (section.id === letter) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
