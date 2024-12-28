@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <style>
+        /* Estilos generales */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -12,26 +13,18 @@
             background-color: #f4f4f4;
             color: #333;
         }
-
         header {
             background-color: #212121;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
         #categories {
             display: flex;
             justify-content: center;
             margin: 20px 0;
             flex-wrap: wrap;
         }
-
         .category {
             background-color: #ff5722;
             color: white;
@@ -42,14 +35,11 @@
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
         }
-
         .category:hover {
             transform: scale(1.1);
             background-color: #e64a19;
         }
-
         #product-container {
-            display: none;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
@@ -57,11 +47,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-
         .product-section {
             margin: 20px 0;
         }
-
         .product {
             display: flex;
             justify-content: space-between;
@@ -70,28 +58,23 @@
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
-
         .product img {
             width: 80px;
             height: 80px;
             border-radius: 8px;
             margin-right: 20px;
         }
-
         .product-details {
             flex: 1;
         }
-
         .product-name {
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         .product-price {
             color: #ff5722;
             font-size: 1.1em;
         }
-
         button {
             background-color: #ff5722;
             color: white;
@@ -101,16 +84,8 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         button:hover {
             background-color: #e64a19;
-        }
-
-        footer {
-            background-color: #212121;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
         }
     </style>
 </head>
@@ -129,60 +104,40 @@
         <div id="aceites" class="product-section">
             <h2>Aceites</h2>
             <div class="product">
-                <img src="https://via.placeholder.com/80" alt="Aceite 2T Akron">
+                <img src="img/aceite-2t-akron.jpg" alt="Aceite 2T Akron">
                 <div class="product-details">
                     <div class="product-name">Aceite 2T Akron</div>
                     <div class="product-price">$35.00</div>
                 </div>
-                <button>Comprar</button>
+                <button onclick="goToDetails('aceite-2t-akron')">Detalles</button>
             </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/80" alt="Aceite 4T Akron">
-                <div class="product-details">
-                    <div class="product-name">Aceite 4T Akron 20W-50W</div>
-                    <div class="product-price">$150.00</div>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <!-- Agregar más productos aquí -->
+            <!-- Repite para todos los aceites -->
         </div>
 
         <div id="transmision" class="product-section">
             <h2>Transmisión Mecánica</h2>
             <div class="product">
-                <img src="https://via.placeholder.com/80" alt="Ajustadores de Cadena DM150">
+                <img src="img/ajustadores-dm150.jpg" alt="Ajustadores de Cadena DM150">
                 <div class="product-details">
                     <div class="product-name">Ajustadores de Cadena DM150</div>
                     <div class="product-price">$150.00</div>
                 </div>
-                <button>Comprar</button>
+                <button onclick="goToDetails('ajustadores-dm150')">Detalles</button>
             </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/80" alt="Ajustadores de Cadena DM200">
-                <div class="product-details">
-                    <div class="product-name">Ajustadores de Cadena DM200</div>
-                    <div class="product-price">$160.00</div>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <!-- Agregar más productos aquí -->
+            <!-- Repite para todos los productos de transmisión -->
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
-    </footer>
-
     <script>
         function showCategory(category) {
-            const container = document.getElementById('product-container');
             const sections = document.querySelectorAll('.product-section');
-
             sections.forEach(section => {
                 section.style.display = section.id === category ? 'block' : 'none';
             });
+        }
 
-            container.style.display = 'block';
+        function goToDetails(productId) {
+            window.location.href = detalle.html?product=${productId};
         }
     </script>
 </body>
