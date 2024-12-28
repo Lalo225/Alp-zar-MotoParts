@@ -3,77 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Moto Partes Alpízar</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Productos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #212121;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        #categories {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            background-color: #ff5722;
+            color: white;
+            margin: 10px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .category:hover {
+            transform: scale(1.1);
+            background-color: #e64a19;
+        }
+
+        #product-container {
+            display: none;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-section {
+            margin: 20px 0;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #ff5722;
+            font-size: 1.1em;
+        }
+
+        button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        footer {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Moto Partes Alpízar</h1>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+        <h1>Catálogo de Productos</h1>
+        <p>Elige una categoría para ver más detalles</p>
     </header>
-    <main>
-        <section id="aceites">
-            <h2>Aceites</h2>
-            <div class="productos-grid">
-                <!-- Aceites -->
-                <div class="producto-card">
-                    <h3>Aceite 2T Akron</h3>
-                    <p>Precio: $35.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Aceite 4T Akron 20W-50W</h3>
-                    <p>Precio: $150.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Aceite 4T Bardahl 20W-50W</h3>
-                    <p>Precio: $140.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Aceite 4T Castrol 20W-50W</h3>
-                    <p>Precio: $190.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Aceite 4T City Road</h3>
-                    <p>Precio: $110.00</p>
-                </div>
-                <!-- Más aceites aquí -->
-            </div>
-        </section>
 
-        <section id="transmision">
-            <h2>Transmisión Mecánica</h2>
-            <div class="productos-grid">
-                <!-- Transmisión -->
-                <div class="producto-card">
-                    <h3>Ajustadores de cadena DM 150 Sayto</h3>
-                    <p>Precio: $150.00</p>
+    <div id="categories">
+        <div class="category" onclick="showCategory('aceites')">Aceites</div>
+        <div class="category" onclick="showCategory('transmision')">Transmisión Mecánica</div>
+    </div>
+
+    <div id="product-container">
+        <div id="aceites" class="product-section">
+            <h2>Aceites</h2>
+            <div class="product">
+                <img src="https://via.placeholder.com/80" alt="Aceite 2T Akron">
+                <div class="product-details">
+                    <div class="product-name">Aceite 2T Akron</div>
+                    <div class="product-price">$35.00</div>
                 </div>
-                <div class="producto-card">
-                    <h3>Ajustadores de cadena DM 200</h3>
-                    <p>Precio: $160.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Ajustadores de cadena Winmex DM 200</h3>
-                    <p>Precio: $140.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Ajustadores de cadena Winmex FT 150</h3>
-                    <p>Precio: $100.00</p>
-                </div>
-                <div class="producto-card">
-                    <h3>Ajustadores de cadena Winmex FT 125</h3>
-                    <p>Precio: $50.00</p>
-                </div>
-                <!-- Más transmisión aquí -->
+                <button>Comprar</button>
             </div>
-        </section>
-    </main>
-    <footer id="contacto">
+            <div class="product">
+                <img src="https://via.placeholder.com/80" alt="Aceite 4T Akron">
+                <div class="product-details">
+                    <div class="product-name">Aceite 4T Akron 20W-50W</div>
+                    <div class="product-price">$150.00</div>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <!-- Agregar más productos aquí -->
+        </div>
+
+        <div id="transmision" class="product-section">
+            <h2>Transmisión Mecánica</h2>
+            <div class="product">
+                <img src="https://via.placeholder.com/80" alt="Ajustadores de Cadena DM150">
+                <div class="product-details">
+                    <div class="product-name">Ajustadores de Cadena DM150</div>
+                    <div class="product-price">$150.00</div>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/80" alt="Ajustadores de Cadena DM200">
+                <div class="product-details">
+                    <div class="product-name">Ajustadores de Cadena DM200</div>
+                    <div class="product-price">$160.00</div>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <!-- Agregar más productos aquí -->
+        </div>
+    </div>
+
+    <footer>
         <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function showCategory(category) {
+            const container = document.getElementById('product-container');
+            const sections = document.querySelectorAll('.product-section');
+
+            sections.forEach(section => {
+                section.style.display = section.id === category ? 'block' : 'none';
+            });
+
+            container.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
