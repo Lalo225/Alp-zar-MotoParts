@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Producto</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .product-detail {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .details {
-            margin-top: 20px;
-        }
-        h1 {
-            font-size: 2em;
-            color: #333;
-        }
-        p {
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Producto</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js"></script>
 </head>
 <body>
-    <div class="product-detail">
-        <img src="img/placeholder.jpg" id="product-image" alt="Producto">
-        <div class="details">
-            <h1 id="product-name">Nombre del Producto</h1>
-            <p id="product-description">Descripción detallada del producto.</p>
-            <p><strong>Precio:</strong> <span id="product-price">$0.00</span></p>
-        </div>
+  <header>
+    <h1>Detalle del Producto</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="detalle.html">Detalle Producto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="detalle-producto">
+      <h2>Aceite 2T Akron</h2>
+      <p>Este aceite es ideal para motocicletas con motor 2T, proporcionando una excelente lubricación y protección en motores de alto rendimiento.</p>
+      <p>Precio: $35.00</p>
+      <a href="productos.html" class="volver-btn">Volver a Productos</a>
     </div>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('product');
-        // Aquí agregas lógica para obtener los datos específicos del producto por su ID
-    </script>
+    <div class="detalle-producto">
+      <h2>Aceite 4T Akron 20W-50W</h2>
+      <p>Aceite especialmente formulado para motores de motocicleta 4T, ofreciendo una excelente protección contra el desgaste y mejora del rendimiento.</p>
+      <p>Precio: $150.00</p>
+      <a href="productos.html" class="volver-btn">Volver a Productos</a>
+    </div>
+
+    <div class="detalle-producto">
+      <h2>Aceite 4T Bardahl 20W-50W</h2>
+      <p>Este aceite de la marca Bardahl ofrece un rendimiento superior, brindando protección a los motores de motocicleta y optimizando la combustión.</p>
+      <p>Precio: $140.00</p>
+      <a href="productos.html" class="volver-btn">Volver a Productos</a>
+    </div>
+
+    <div class="detalle-producto">
+      <h2>Aceite 4T Castrol 20W-50W</h2>
+      <p>Castrol 20W-50W es un aceite de alta calidad que asegura una lubricación eficaz en condiciones de alto rendimiento y temperaturas extremas.</p>
+      <p>Precio: $190.00</p>
+      <a href="productos.html" class="volver-btn">Volver a Productos</a>
+    </div>
+
+    <!-- Aquí irían los demás productos con su descripción y precio -->
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
