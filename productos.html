@@ -3,79 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #4CAF50;
-            font-size: 2.5em;
-        }
-
-        #search-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            width: 80%;
-            max-width: 600px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        #product-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        .product {
-            background-color: #fff;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Productos - Moto Partes Alpízar</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Productos</h1>
-    <div id="search-container">
-        <input type="text" id="search-bar" placeholder="Buscar productos...">
-    </div>
-    <div id="product-container">
-        <div class="product" data-name="Aceites">Aceites</div>
-        <div class="product" data-name="Balatas">Balatas</div>
-        <div class="product" data-name="Cables">Cables</div>
-        <div class="product" data-name="Casco de moto">Casco de moto</div>
-        <div class="product" data-name="Frenos">Frenos</div>
-        <div class="product" data-name="Luces LED">Luces LED</div>
-        <!-- Añade más productos según sea necesario -->
-    </div>
-    <script src="scripts.js"></script>
+    <header>
+        <h1>Moto Partes Alpízar</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <section id="aceites">
+            <h2>Aceites</h2>
+            <div class="productos-grid">
+                <!-- Aceites -->
+                <div class="producto-card">
+                    <h3>Aceite 2T Akron</h3>
+                    <p>Precio: $35.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Aceite 4T Akron 20W-50W</h3>
+                    <p>Precio: $150.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Aceite 4T Bardahl 20W-50W</h3>
+                    <p>Precio: $140.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Aceite 4T Castrol 20W-50W</h3>
+                    <p>Precio: $190.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Aceite 4T City Road</h3>
+                    <p>Precio: $110.00</p>
+                </div>
+                <!-- Más aceites aquí -->
+            </div>
+        </section>
+
+        <section id="transmision">
+            <h2>Transmisión Mecánica</h2>
+            <div class="productos-grid">
+                <!-- Transmisión -->
+                <div class="producto-card">
+                    <h3>Ajustadores de cadena DM 150 Sayto</h3>
+                    <p>Precio: $150.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Ajustadores de cadena DM 200</h3>
+                    <p>Precio: $160.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Ajustadores de cadena Winmex DM 200</h3>
+                    <p>Precio: $140.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Ajustadores de cadena Winmex FT 150</h3>
+                    <p>Precio: $100.00</p>
+                </div>
+                <div class="producto-card">
+                    <h3>Ajustadores de cadena Winmex FT 125</h3>
+                    <p>Precio: $50.00</p>
+                </div>
+                <!-- Más transmisión aquí -->
+            </div>
+        </section>
+    </main>
+    <footer id="contacto">
+        <p>&copy; 2024 Moto Partes Alpízar. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
