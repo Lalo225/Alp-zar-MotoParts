@@ -5,8 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <style>
-        .product { display: none; }
-        .alphabet { cursor: pointer; padding: 5px; border: 1px solid #000; margin: 2px; display: inline-block; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+            font-size: 2.5em;
+        }
+
+        #alphabet-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .alphabet {
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+        }
+
+        .alphabet:hover {
+            background-color: #4CAF50;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        #product-container {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product {
+            display: none;
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
@@ -15,11 +83,20 @@
         <!-- Aquí se generará el abecedario -->
     </div>
     <div id="product-container">
-        <!-- Aquí van los productos -->
-        <div class="product" data-letter="A">Aceites</div>
-        <div class="product" data-letter="B">Balatas</div>
-        <div class="product" data-letter="C">Cables</div>
-        <!-- Añadir más productos según sea necesario -->
+        <!-- Aquí van las secciones de productos -->
+        <div id="A" class="section">
+            <div class="product">Aceites</div>
+            <!-- Añadir más productos de la letra A -->
+        </div>
+        <div id="B" class="section">
+            <div class="product">Balatas</div>
+            <!-- Añadir más productos de la letra B -->
+        </div>
+        <div id="C" class="section">
+            <div class="product">Cables</div>
+            <!-- Añadir más productos de la letra C -->
+        </div>
+        <!-- Añadir más secciones según sea necesario -->
     </div>
 
     <script>
@@ -30,18 +107,18 @@
             const letterElement = document.createElement('div');
             letterElement.className = 'alphabet';
             letterElement.innerText = letter;
-            letterElement.onclick = () => showProducts(letter);
+            letterElement.onclick = () => showSection(letter);
             alphabetContainer.appendChild(letterElement);
         });
 
-        // Mostrar productos según la letra seleccionada
-        function showProducts(letter) {
-            const products = document.querySelectorAll('.product');
-            products.forEach(product => {
-                if (product.getAttribute('data-letter') === letter) {
-                    product.style.display = 'block';
+        // Mostrar la sección de productos según la letra seleccionada
+        function showSection(letter) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (section.id === letter) {
+                    section.classList.add('active');
                 } else {
-                    product.style.display = 'none';
+                    section.classList.remove('active');
                 }
             });
         }
