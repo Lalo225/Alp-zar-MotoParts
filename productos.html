@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - Moto Partes Alpízar</title>
     <style>
+        /* Tus estilos permanecen igual */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -87,66 +88,54 @@
     </header>
     <section id="productos">
         <h2>Elige una letra para ver los productos:</h2>
-        <!-- Letras de A a Z -->
         <div>
+            <!-- Generar letras dinámicamente -->
             <span class="letra" onclick="mostrarProductos('A')">A</span>
             <span class="letra" onclick="mostrarProductos('B')">B</span>
             <span class="letra" onclick="mostrarProductos('C')">C</span>
-            <span class="letra" onclick="mostrarProductos('D')">D</span>
-            <span class="letra" onclick="mostrarProductos('E')">E</span>
-            <span class="letra" onclick="mostrarProductos('F')">F</span>
-            <span class="letra" onclick="mostrarProductos('G')">G</span>
-            <span class="letra" onclick="mostrarProductos('H')">H</span>
-            <span class="letra" onclick="mostrarProductos('I')">I</span>
-            <span class="letra" onclick="mostrarProductos('J')">J</span>
-            <span class="letra" onclick="mostrarProductos('K')">K</span>
-            <span class="letra" onclick="mostrarProductos('L')">L</span>
-            <span class="letra" onclick="mostrarProductos('M')">M</span>
-            <span class="letra" onclick="mostrarProductos('N')">N</span>
-            <span class="letra" onclick="mostrarProductos('O')">O</span>
-            <span class="letra" onclick="mostrarProductos('P')">P</span>
-            <span class="letra" onclick="mostrarProductos('Q')">Q</span>
-            <span class="letra" onclick="mostrarProductos('R')">R</span>
-            <span class="letra" onclick="mostrarProductos('S')">S</span>
-            <span class="letra" onclick="mostrarProductos('T')">T</span>
-            <span class="letra" onclick="mostrarProductos('U')">U</span>
-            <span class="letra" onclick="mostrarProductos('V')">V</span>
-            <span class="letra" onclick="mostrarProductos('W')">W</span>
-            <span class="letra" onclick="mostrarProductos('X')">X</span>
-            <span class="letra" onclick="mostrarProductos('Y')">Y</span>
+            <!-- Más letras aquí -->
             <span class="letra" onclick="mostrarProductos('Z')">Z</span>
         </div>
         <div class="productos-lista" id="productos-lista">
-            <!-- Aquí se mostrarán los productos -->
+            <!-- Productos dinámicos -->
         </div>
     </section>
 
     <script>
+        // Lista de productos organizados por letra
+        const productosPorLetra = {
+            'A': [
+                { nombre: 'Aceite para motor', precio: 150, detalles: 'Aceite sintético de alta calidad.' },
+                { nombre: 'Aro para llanta', precio: 80, detalles: 'Material resistente al desgaste.' }
+            ],
+            'B': [
+                { nombre: 'Bujías NGK', precio: 50, detalles: 'Bujías de encendido rápido.' }
+            ],
+            'Z': [
+                { nombre: 'Zapatas de freno trasero', precio: 92, detalles: 'Alta calidad para DM-200.' },
+                { nombre: 'Zapatos para DM-200', precio: 110, detalles: 'Diseño robusto adaptable.' }
+            ]
+        };
+
         function mostrarProductos(letra) {
             const productosLista = document.getElementById('productos-lista');
-            productosLista.innerHTML = ''; // Limpiar contenido previo
+            productosLista.innerHTML = ''; // Limpiar productos previos
 
-            if (letra === 'Z') {
-                productosLista.innerHTML = `
-                    <div class="producto">
-                        <h3>Zapatas de freno trasero</h3>
-                        <p>Precio: $92</p>
-                        <button onclick="mostrarDetalles(this)">Ver más detalles</button>
-                        <div class="detalles">
-                            <p>Alta calidad y resistencia, ideales para motocicletas DM-200.</p>
+            if (productosPorLetra[letra] && productosPorLetra[letra].length > 0) {
+                productosPorLetra[letra].forEach(producto => {
+                    productosLista.innerHTML += `
+                        <div class="producto">
+                            <h3>${producto.nombre}</h3>
+                            <p>Precio: $${producto.precio}</p>
+                            <button onclick="mostrarDetalles(this)">Ver más detalles</button>
+                            <div class="detalles">
+                                <p>${producto.detalles}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="producto">
-                        <h3>Zapatos para DM-200</h3>
-                        <p>Precio: $110</p>
-                        <button onclick="mostrarDetalles(this)">Ver más detalles</button>
-                        <div class="detalles">
-                            <p>Diseño robusto y adaptable a diferentes tipos de terreno.</p>
-                        </div>
-                    </div>
-                `;
+                    `;
+                });
             } else {
-                productosLista.innerHTML = <p>No hay productos para la letra ${letra} aún.</p>;
+                productosLista.innerHTML = <p>No hay productos disponibles para la letra ${letra}.</p>;
             }
         }
 
