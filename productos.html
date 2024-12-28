@@ -3,124 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Moto Partes Alpízar</title>
+    <title>Productos</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #212121;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-        section {
-            padding: 20px;
-            text-align: center;
-        }
-        .letra {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 5px;
-            display: inline-block;
-            cursor: pointer;
-            color: #ff5722;
-            text-decoration: underline;
-        }
-        .letra:hover {
-            color: #e64a19;
-        }
-        .productos-lista {
-            margin-top: 20px;
-        }
-        .producto {
-            background-color: #fff;
-            margin: 10px auto;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            text-align: left;
-        }
-        .producto h3 {
-            margin: 0 0 10px;
-            color: #333;
-        }
-        .producto p {
-            margin: 0;
-            color: #666;
-        }
+        .product { display: none; }
+        .alphabet { cursor: pointer; padding: 5px; border: 1px solid #000; margin: 2px; display: inline-block; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Productos - Moto Partes Alpízar</h1>
-    </header>
-    <section id="productos">
-        <h2>Elige una letra para ver los productos:</h2>
-        <!-- Letras de A a Z -->
-        <div id="abecedario">
-            <!-- Se generarán las letras automáticamente -->
-        </div>
-        <div class="productos-lista" id="productos-lista">
-            <!-- Aquí se mostrarán los productos -->
-        </div>
-    </section>
+    <h1>Productos</h1>
+    <div id="alphabet-container">
+        <!-- Aquí se generará el abecedario -->
+    </div>
+    <div id="product-container">
+        <!-- Aquí van los productos -->
+        <div class="product" data-letter="A">Aceites</div>
+        <div class="product" data-letter="B">Balatas</div>
+        <div class="product" data-letter="C">Cables</div>
+        <!-- Añadir más productos según sea necesario -->
+    </div>
 
     <script>
-        // Productos organizados por letra
-        const productosPorLetra = {
-            'A': [
-                { nombre: 'Aceite para motor', precio: 150, detalles: 'Aceite sintético de alta calidad.' },
-                { nombre: 'Aro para llanta', precio: 80, detalles: 'Material resistente al desgaste.' }
-            ],
-            'B': [
-                { nombre: 'Bujías NGK', precio: 50, detalles: 'Bujías de encendido rápido.' }
-            ],
-            'Z': [
-                { nombre: 'Zapatas de freno trasero', precio: 92, detalles: 'Alta calidad para DM-200.' },
-                { nombre: 'Zapatos para DM-200', precio: 110, detalles: 'Diseño robusto adaptable.' }
-            ]
-        };
+        // Generar el abecedario
+        const alphabetContainer = document.getElementById('alphabet-container');
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        alphabet.forEach(letter => {
+            const letterElement = document.createElement('div');
+            letterElement.className = 'alphabet';
+            letterElement.innerText = letter;
+            letterElement.onclick = () => showProducts(letter);
+            alphabetContainer.appendChild(letterElement);
+        });
 
-        // Generar abecedario dinámicamente
-        const abecedarioDiv = document.getElementById('abecedario');
-        for (let i = 65; i <= 90; i++) { // Código ASCII de A a Z
-            const letra = String.fromCharCode(i);
-            const span = document.createElement('span');
-            span.classList.add('letra');
-            span.textContent = letra;
-            span.onclick = () => mostrarProductos(letra);
-            abecedarioDiv.appendChild(span);
-        }
-
-        // Función para mostrar productos según la letra seleccionada
-        function mostrarProductos(letra) {
-            const productosLista = document.getElementById('productos-lista');
-            productosLista.innerHTML = ''; // Limpiar productos previos
-
-            if (productosPorLetra[letra] && productosPorLetra[letra].length > 0) {
-                productosPorLetra[letra].forEach(producto => {
-                    const productoDiv = document.createElement('div');
-                    productoDiv.classList.add('producto');
-                    productoDiv.innerHTML = `
-                        <h3>${producto.nombre}</h3>
-                        <p>Precio: $${producto.precio}</p>
-                        <p>${producto.detalles}</p>
-                    `;
-                    productosLista.appendChild(productoDiv);
-                });
-            } else {
-                productosLista.innerHTML = <p>No hay productos disponibles para la letra "${letra}".</p>;
-            }
+        // Mostrar productos según la letra seleccionada
+        function showProducts(letter) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (product.getAttribute('data-letter') === letter) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
