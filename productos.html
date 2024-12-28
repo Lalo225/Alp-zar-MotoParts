@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - Moto Partes Alpízar</title>
     <style>
-        /* Tus estilos permanecen igual */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -50,7 +49,6 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             text-align: left;
-            position: relative;
         }
         .producto h3 {
             margin: 0 0 10px;
@@ -60,26 +58,6 @@
             margin: 0;
             color: #666;
         }
-        .detalles {
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            background-color: #f9f9f9;
-            color: #444;
-        }
-        .producto button {
-            background-color: #ff5722;
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .producto button:hover {
-            background-color: #e64a19;
-        }
     </style>
 </head>
 <body>
@@ -88,21 +66,17 @@
     </header>
     <section id="productos">
         <h2>Elige una letra para ver los productos:</h2>
-        <div>
-            <!-- Generar letras dinámicamente -->
-            <span class="letra" onclick="mostrarProductos('A')">A</span>
-            <span class="letra" onclick="mostrarProductos('B')">B</span>
-            <span class="letra" onclick="mostrarProductos('C')">C</span>
-            <!-- Más letras aquí -->
-            <span class="letra" onclick="mostrarProductos('Z')">Z</span>
+        <!-- Letras de A a Z -->
+        <div id="abecedario">
+            <!-- Se generarán las letras automáticamente -->
         </div>
         <div class="productos-lista" id="productos-lista">
-            <!-- Productos dinámicos -->
+            <!-- Aquí se mostrarán los productos -->
         </div>
     </section>
 
     <script>
-        // Lista de productos organizados por letra
+        // Productos organizados por letra
         const productosPorLetra = {
             'A': [
                 { nombre: 'Aceite para motor', precio: 150, detalles: 'Aceite sintético de alta calidad.' },
@@ -117,31 +91,36 @@
             ]
         };
 
+        // Generar abecedario dinámicamente
+        const abecedarioDiv = document.getElementById('abecedario');
+        for (let i = 65; i <= 90; i++) { // Código ASCII de A a Z
+            const letra = String.fromCharCode(i);
+            const span = document.createElement('span');
+            span.classList.add('letra');
+            span.textContent = letra;
+            span.onclick = () => mostrarProductos(letra);
+            abecedarioDiv.appendChild(span);
+        }
+
+        // Función para mostrar productos según la letra seleccionada
         function mostrarProductos(letra) {
             const productosLista = document.getElementById('productos-lista');
             productosLista.innerHTML = ''; // Limpiar productos previos
 
             if (productosPorLetra[letra] && productosPorLetra[letra].length > 0) {
                 productosPorLetra[letra].forEach(producto => {
-                    productosLista.innerHTML += `
-                        <div class="producto">
-                            <h3>${producto.nombre}</h3>
-                            <p>Precio: $${producto.precio}</p>
-                            <button onclick="mostrarDetalles(this)">Ver más detalles</button>
-                            <div class="detalles">
-                                <p>${producto.detalles}</p>
-                            </div>
-                        </div>
+                    const productoDiv = document.createElement('div');
+                    productoDiv.classList.add('producto');
+                    productoDiv.innerHTML = `
+                        <h3>${producto.nombre}</h3>
+                        <p>Precio: $${producto.precio}</p>
+                        <p>${producto.detalles}</p>
                     `;
+                    productosLista.appendChild(productoDiv);
                 });
             } else {
-                productosLista.innerHTML = <p>No hay productos disponibles para la letra ${letra}.</p>;
+                productosLista.innerHTML = <p>No hay productos disponibles para la letra "${letra}".</p>;
             }
-        }
-
-        function mostrarDetalles(button) {
-            const detalles = button.nextElementSibling;
-            detalles.style.display = detalles.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
